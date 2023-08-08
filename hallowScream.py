@@ -55,9 +55,9 @@ currentIndex = 0
 print("Sampler Ready.")
 sound_to_play = pygame.mixer.Sound(dirname + '/fx/' + sounds[12])
 dino_sound_to_play = pygame.mixer.Sound(dirname + '/dinoFx/' + dinoSounds[12])
+ready_sound = pygame.mixer.Sound(dirname + '/ready.mp3')
 
-# sound_player.play(sound_to_play)
-# sound_player.play(dino_sound_to_play)
+sound_player.play(ready_sound)
 
 
 def getMeasurement():
@@ -66,7 +66,7 @@ def getMeasurement():
     GPIO.output(TRIG, False)
 
     print("Waiting For Sensor To Settle")
-    time.sleep(2)
+    time.sleep(1)
     GPIO.output(TRIG, True)
     time.sleep(0.00001)
     GPIO.output(TRIG, False)
@@ -118,7 +118,7 @@ while True:
                 if currentIndex > 12:
                     print("Starting over")
                     currentIndex = 0
-            sleep(10)
+            sleep(5)
 
     except KeyboardInterrupt:
         exit()
