@@ -1,5 +1,5 @@
 #!/usr/bin/python3.7
-import pygame.mixer
+import pygame
 import time
 from time import sleep
 from sys import exit
@@ -11,8 +11,10 @@ dirname = os.path.dirname(os.path.abspath(__file__))
 SWITCH = 21
 TRIG = 23
 ECHO = 24
+RELAY = 20
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(RELAY, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
 GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
@@ -98,11 +100,24 @@ while True:
         if GPIO.input(SWITCH):
             if big_kid:
                 print("WE GOT A BIGGIN, SCARE EM")
+                GPIO.output(RELAY, True)
+                print("DINO SCARE!")
+
                 print("triggered! playing" + str(dinoSounds[currentIndex]))
 
                 sound_to_play = pygame.mixer.Sound(
                     dirname + '/dinoFx/' + dinoSounds[currentIndex])
                 sound_player.play(dino_sound_to_play)
+
+                # wait until the sound is over before moving the relay back
+                while sound_player.get_busy():
+                    print("audio still playing")
+                    sleep(1)
+                
+                print("audio done playing")
+                GPIO.output(RELAY, False)
+                print("DINO HIDE!")
+
                 currentIndex = currentIndex + 1
                 # Restart the index for the sounds
                 if currentIndex > 16:
