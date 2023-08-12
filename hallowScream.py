@@ -33,8 +33,9 @@ sounds = ['onlyTakeOne.wav',
           'Spooky.wav',
           'MonsterLaugh.wav']
 
-dinoSounds = ['1. T-Rex Roar.wav',
+dinoSounds = ['Dino_Trex_Vox_Chomp_Breath_03.wav',
               'Dino_Trex_Vox_Bite_01.wav',
+              '1. T-Rex Roar.wav',
               '2. T-Rex Roar.wav',
               'Dino_Trex_Vox_Bite_03.wav',
               '3. T-Rex Roar.wav',
