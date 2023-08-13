@@ -30,7 +30,7 @@ sounds = ['onlyTakeOne.wav',
           'TrickOrTreat.wav',
           'IHopeYouLike.wav',
           'Spooky.wav',
-          'MonsterLaugh.wav'
+          'MonsterLaugh.wav',
           'didYouJustTakeSomeCandy?.wav',
           ]
 
