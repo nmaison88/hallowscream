@@ -55,6 +55,7 @@ dinoSounds = ['chomp2.wav',
               'chomp2.wav']
 sound_player = pygame.mixer.Channel(2)
 currentIndex = 0
+dinoCurrentIndex = 0
 
 print("Sampler Ready.")
 # sound_to_play = pygame.mixer.Sound(dirname + '/fx/' + sounds[12])
@@ -105,10 +106,10 @@ while True:
                 GPIO.output(RELAY, True)
                 print("DINO SCARE!")
 
-                print("triggered! playing " + str(dinoSounds[currentIndex]))
+                print("triggered! playing " + str(dinoSounds[dinoCurrentIndex]))
 
                 sound_to_play = pygame.mixer.Sound(
-                    dirname + '/dinoFx/' + dinoSounds[currentIndex])
+                    dirname + '/dinoFx/' + dinoSounds[dinoCurrentIndex])
                 sound_player.play(sound_to_play)
 
                 # wait until the sound is over before moving the relay back
@@ -120,11 +121,11 @@ while True:
                 GPIO.output(RELAY, False)
                 print("DINO HIDE!")
 
-                currentIndex = currentIndex + 1
+                dinoCurrentIndex = dinoCurrentIndex + 1
                 # Restart the index for the sounds
-                if currentIndex > 18:
+                if dinoCurrentIndex > 18:
                     print("Starting over")
-                    currentIndex = 0
+                    dinoCurrentIndex = 0
             else:
                 print("triggered! playing " + str(sounds[currentIndex]))
                 sound_to_play = pygame.mixer.Sound(
