@@ -105,7 +105,7 @@ while True:
                 GPIO.output(RELAY, True)
                 print("DINO SCARE!")
 
-                print("triggered! playing" + str(dinoSounds[currentIndex]))
+                print("triggered! playing " + str(dinoSounds[currentIndex]))
 
                 sound_to_play = pygame.mixer.Sound(
                     dirname + '/dinoFx/' + dinoSounds[currentIndex])
@@ -122,11 +122,11 @@ while True:
 
                 currentIndex = currentIndex + 1
                 # Restart the index for the sounds
-                if currentIndex > 19:
+                if currentIndex > 18:
                     print("Starting over")
                     currentIndex = 0
             else:
-                print("triggered! playing" + str(sounds[currentIndex]))
+                print("triggered! playing " + str(sounds[currentIndex]))
                 sound_to_play = pygame.mixer.Sound(
                     dirname + '/fx/' + sounds[currentIndex])
                 sound_player.play(sound_to_play)
