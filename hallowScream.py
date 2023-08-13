@@ -50,7 +50,7 @@ dinoSounds = ['Dino_Trex_Vox_Chomp_Breath_03.wav',
               '2. T-Rex Roar.wav',
               '8. T-Rex Roar.wav',
               '9. T-Rex Roar.wav',
-              'babyDinoWail.mp3',
+              'babyDinoWail.wav',
               'Dino_Trex_Vox_Chomp_Breath_03.wav']
 sound_player = pygame.mixer.Channel(2)
 currentIndex = 0
@@ -108,7 +108,7 @@ while True:
 
                 sound_to_play = pygame.mixer.Sound(
                     dirname + '/dinoFx/' + dinoSounds[currentIndex])
-                sound_player.play(dino_sound_to_play)
+                sound_player.play(sound_to_play)
 
                 # wait until the sound is over before moving the relay back
                 while sound_player.get_busy():
