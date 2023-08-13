@@ -26,38 +26,39 @@ sounds = ['onlyTakeOne.wav',
           'hahaaBoo.wav',
           'didYouJustTakeSomeCandy?.wav',
           'hahahBooMonster.wav',
-          'Growl.wav',
           'getAwayFromMyHouse.wav',
           'TrickOrTreat.wav',
           'IHopeYouLike.wav',
           'Spooky.wav',
-          'MonsterLaugh.wav']
+          'MonsterLaugh.wav'
+          'didYouJustTakeSomeCandy?.wav',
+          ]
 
-dinoSounds = ['Dino_Trex_Vox_Chomp_Breath_03.wav',
-              'Dino_Trex_Vox_Bite_01.wav',
-              '1. T-Rex Roar.wav',
-              '2. T-Rex Roar.wav',
-              'Dino_Trex_Vox_Bite_03.wav',
-              '3. T-Rex Roar.wav',
-              'Dino_Trex_Vox_Chomp_01.wav',
-              '10. T-Rex Roar.wav',
-              'Dino_Trex_Vox_Bite_02.wav',
-              '4. T-Rex Roar.wav',
-              'Dino_Trex_Vox_Bite_05.wav',
-              '5. T-Rex Roar.wav',
-              '6. T-Rex Roar.wav',
-              '7. T-Rex Roar.wav',
-              '2. T-Rex Roar.wav',
-              '8. T-Rex Roar.wav',
-              '9. T-Rex Roar.wav',
+dinoSounds = ['chomp2.wav',
+              'bite1.wav',
+              'roar1.wav',
+              'roar2.wav',
+              'bite3.wav',
+              'roar3.wav',
+              'chomp1.wav',
+              'roar10.wav',
+              'bite2.wav',
+              'roar4.wav',
+              'bite4.wav',
+              'roar5.wav',
+              'roar6.wav',
+              'roar7.wav',
+              'roar2.wav',
+              'roar8.wav',
+              'roar9.wav',
               'babyDinoWail.wav',
-              'Dino_Trex_Vox_Chomp_Breath_03.wav']
+              'chomp2.wav']
 sound_player = pygame.mixer.Channel(2)
 currentIndex = 0
 
 print("Sampler Ready.")
-sound_to_play = pygame.mixer.Sound(dirname + '/fx/' + sounds[12])
-dino_sound_to_play = pygame.mixer.Sound(dirname + '/dinoFx/' + dinoSounds[12])
+# sound_to_play = pygame.mixer.Sound(dirname + '/fx/' + sounds[12])
+# dino_sound_to_play = pygame.mixer.Sound(dirname + '/dinoFx/' + dinoSounds[12])
 ready_sound = pygame.mixer.Sound(dirname + '/ready.mp3')
 
 sound_player.play(ready_sound)
@@ -94,7 +95,7 @@ def getMeasurement():
 while True:
     try:
         feet_detected = getMeasurement()
-        # check if the person is tall by checking if theyre at least 4 ft from the sensor above head
+        # check if the person is tall by checking if they're at least 4 ft from the sensor above head
         big_kid = feet_detected < 4
         print("is it a big_kid", big_kid)
 
@@ -114,14 +115,14 @@ while True:
                 while sound_player.get_busy():
                     print("audio still playing")
                     sleep(1)
-                
+
                 print("audio done playing")
                 GPIO.output(RELAY, False)
                 print("DINO HIDE!")
 
                 currentIndex = currentIndex + 1
                 # Restart the index for the sounds
-                if currentIndex > 16:
+                if currentIndex > 19:
                     print("Starting over")
                     currentIndex = 0
             else:
