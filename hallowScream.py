@@ -136,7 +136,7 @@ while True:
                 if currentIndex > 12:
                     print("Starting over")
                     currentIndex = 0
-            sleep(5)
+            sleep(3)
 
     except KeyboardInterrupt:
         exit()
