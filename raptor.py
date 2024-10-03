@@ -21,54 +21,62 @@ GPIO.setup(ECHO, GPIO.IN)
 GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 sound_player = pygame.mixer.Channel(2)
 ready_sound = pygame.mixer.Sound(dirname + '/ready.mp3')
-dino_sound_library = ['barky.wav',
-                      'caw_scare_sting.wav',
-                      'distant_forest.wav',
-                      'growl_higher_pitch.wav',
-                      'quick.wav',
-                      'screech.wav',
-                      'shorter_caw.wav',
-                      'Longest_growl.wav',
-                      'classic.wav',
-                      'fast_caw.wav',
-                      'growl_jump.wav',
-                      'raptorsounds.19.wav',
-                      'screech_caw.wav',
-                      'slow_growl.wav',
-                      'call_others.wav',
-                      'classic3.wav',
-                      'fast_growl_sting.wav',
-                      'growl_medium.wav',
-                      'raptorsounds.35.wav',
-                      'screech_growl.wav',
-                      'spike.wav',
-                      'call_others2.wav',
-                      'classic4.wav',
-                      'goody.wav',
-                      'growl_spike.wav',
-                      'raptorsounds.53.wav',
-                      'screech_long.wav',
-                      'sting.wav',
-                      'call_others3.wav',
-                      'classic_bark.wav',
-                      'growl.wav',
-                      'longer_growl.wav',
-                      'raptorsounds.70.wav',
-                      'screech_longest.wav',
-                      'sting2.wav',
-                      'caw_distant_screech.wav',
-                      'classic_wail.wav',
-                      'growl_caw.wav',
-                      'muffled_caw.wav',
-                      'reverby.wav',
-                      'screech_short.wav',
-                      'wail.wav',
-                      'caw_inside_space.wav',
-                      'distant_caw.wav',
-                      'growl_fast.wav',
-                      'muffled_caw_distant.wav',
-                      'scary.wav',
-                      'short_caw.wav']
+dino_sound_library = ['jump',
+                      'classic',
+                      'call',
+                      'growl',
+                      'talk',
+                      'attack'
+                      ]
+# SOUND FILES
+# 'barky.wav',
+# 'caw_scare_sting.wav',
+# 'distant_forest.wav',
+# 'growl_higher_pitch.wav',
+# 'quick.wav',
+# 'screech.wav',
+# 'shorter_caw.wav',
+# 'Longest_growl.wav',
+# 'classic.wav',
+# 'fast_caw.wav',
+# 'growl_jump.wav',
+# 'raptorsounds.19.wav',
+# 'screech_caw.wav',
+# 'slow_growl.wav',
+# 'call_others.wav',
+# 'classic3.wav',
+# 'fast_growl_sting.wav',
+# 'growl_medium.wav',
+# 'raptorsounds.35.wav',
+# 'screech_growl.wav',
+# 'spike.wav',
+# 'call_others2.wav',
+# 'classic4.wav',
+# 'goody.wav',
+# 'growl_spike.wav',
+# 'raptorsounds.53.wav',
+# 'screech_long.wav',
+# 'sting.wav',
+# 'call_others3.wav',
+# 'classic_bark.wav',
+# 'growl.wav',
+# 'longer_growl.wav',
+# 'raptorsounds.70.wav',
+# 'screech_longest.wav',
+# 'sting2.wav',
+# 'caw_distant_screech.wav',
+# 'classic_wail.wav',
+# 'growl_caw.wav',
+# 'muffled_caw.wav',
+# 'reverby.wav',
+# 'screech_short.wav',
+# 'wail.wav',
+# 'caw_inside_space.wav',
+# 'distant_caw.wav',
+# 'growl_fast.wav',
+# 'muffled_caw_distant.wav',
+# 'scary.wav',
+# 'short_caw.wav'
 currentIndex = 0
 dinoCurrentIndex = 0
 extended = False
@@ -108,17 +116,17 @@ def playRoutine(sounds):
 
 def createRoutine(title=''):
     print("Getting routine for ", title)
-    if (title == 'scary.wav'):
+    if (title == 'jump'):
         playRoutine(['goody.wav', 'scary.wav'])
-    elif (title == 'distant_forest.wav'):
+    elif (title == 'talk'):
         playRoutine(['distant_forest.wav', 'quick.wav'])
-    elif (title == 'quick.wav'):
+    elif (title == 'attack'):
         playRoutine(['quick.wav', ' barky.wav'])
-    elif (title == 'classic_wail.wav'):
+    elif (title == 'classic'):
         playRoutine(['classic_wail.wav', 'fast_caw.wav'])
-    elif (title == 'call_others2.wav'):
+    elif (title == 'call'):
         playRoutine(['call_others2.wav', 'caw_distant_screech.wav'])
-    elif (title == 'Longest_growl.wav'):
+    elif (title == 'growl'):
         playRoutine(['Longest_growl.wav', 'fast_caw.wav'])
 
 
