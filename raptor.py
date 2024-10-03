@@ -68,8 +68,7 @@ dino_sound_library = ['barky.wav',
                       'growl_fast.wav',
                       'muffled_caw_distant.wav',
                       'scary.wav',
-                      'short_caw.wav',
-                      ]
+                      'short_caw.wav']
 currentIndex = 0
 dinoCurrentIndex = 0
 extended = False
