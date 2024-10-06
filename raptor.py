@@ -145,7 +145,7 @@ while True:
             dinoCurrentIndex = dinoCurrentIndex + 1
 
             # Restart the index for the sounds
-            if dinoCurrentIndex > len(dino_sound_library):
+            if dinoCurrentIndex > 6:
                 print("Starting over")
                 dinoCurrentIndex = 0
             # wait at least this long before next trigger default of 3-4 secs feels good
