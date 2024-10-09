@@ -10,16 +10,13 @@ import random
 # startup/initialization goes here
 pygame.mixer.init(44000, -16, 1, 1024)
 dirname = os.path.dirname(os.path.abspath(__file__))
-SWITCH = 21
-TRIG = 23
-ECHO = 24
-LEFT_ARM_RELAY = 20
-RIGHT_ARM_RELAY = 22
+SWITCH = 4
+LEFT_ARM_RELAY = 23
+RIGHT_ARM_RELAY = 24
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(RELAY, GPIO.OUT)
 GPIO.setup(RIGHT_ARM_RELAY, GPIO.OUT)
-GPIO.setup(ECHO, GPIO.IN)
 GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 sound_player = pygame.mixer.Channel(2)
 ready_sound = pygame.mixer.Sound(dirname + '/ready.mp3')
