@@ -6,17 +6,19 @@ from time import sleep
 from sys import exit
 import os
 import RPi.GPIO as GPIO
-
+import random
 # startup/initialization goes here
 pygame.mixer.init(44000, -16, 1, 1024)
 dirname = os.path.dirname(os.path.abspath(__file__))
 SWITCH = 21
 TRIG = 23
 ECHO = 24
-RELAY = 20
+LEFT_ARM_RELAY = 20
+RIGHT_ARM_RELAY = 22
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(TRIG, GPIO.OUT)
 GPIO.setup(RELAY, GPIO.OUT)
+GPIO.setup(RIGHT_ARM_RELAY, GPIO.OUT)
 GPIO.setup(ECHO, GPIO.IN)
 GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 sound_player = pygame.mixer.Channel(2)
@@ -28,6 +30,8 @@ dino_sound_library = ['jump',
                       'talk',
                       'attack'
                       ]
+movements = ['twitch-left', 'twitch-right', 'rise', 'fall', 'center']
+
 # SOUND FILES
 # 'barky.wav',
 # 'caw_scare_sting.wav',
@@ -87,8 +91,11 @@ extended = False
 def waitForAudioToFinishPlaying():
     while sound_player.get_busy():
         print("audio still playing")
+        playMovement(random(movements))
         sleep(.2)
     print("Started and ready")
+    playMovement(random(movements))
+    sleep(1)
     return
 # method for playing sounds, pass an array and it'll trigger up or down for each
 
@@ -99,19 +106,48 @@ def playRoutine(sounds):
             dirname + '/raptorFx/' + sound)
         sound_player.play(file)
         print("Playing sound: ", sound)
+        # play random movement
+        # playMovement(random(movements))
 
         waitForAudioToFinishPlaying()
-        print("POP Based On status")
-        global extended  # reference the global extended variable
-        if (not extended):
-            print("POP UP")
-            GPIO.output(RELAY, True)
-            extended = True
-        else:
-            print("DROP BACK DOWN")
-            GPIO.output(RELAY, False)
-            extended = False
+
+        # global extended  # reference the global extended variable
+        # if (not extended):
+        #     print("POP UP")
+        #     GPIO.output(LEFT_ARM_RELAY, True)
+        #     extended = True
+        # else:
+        #     print("DROP BACK DOWN")
+        #     GPIO.output(LEFT_ARM_RELAY, False)
+        #     extended = False
+
+    # Return back to center
+    playMovement('center')
     print("Routine Done")
+
+
+def playMovement(movement):
+    if (movement == 'center'):
+        GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+    elif (movement == 'twitch-left'):
+        GPIO.output(LEFT_ARM_RELAY, True)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+    elif (movement == 'twitch-right'):
+        GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, True)
+    elif (movement == 'rise'):
+        GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+        sleep(.5)
+        GPIO.output(LEFT_ARM_RELAY, True)
+        GPIO.output(RIGHT_ARM_RELAY, True)
+    elif (movement == 'fall'):
+        GPIO.output(LEFT_ARM_RELAY, True)
+        GPIO.output(RIGHT_ARM_RELAY, True)
+        sleep(.5)
+        GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, False)
 
 
 def createRoutine(title=''):
