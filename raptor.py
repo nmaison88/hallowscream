@@ -147,7 +147,7 @@ def playRoutine(sounds):
     playMovement('center')
     print("Routine Done")
 
-
+@debounce(4)
 def createRoutine(title=''):
     print("Getting routine for ", title)
     if (title == 'jump'):
@@ -168,25 +168,20 @@ def createRoutine(title=''):
 sound_player.play(ready_sound)
 waitForAudioToFinishPlaying()
 
-@debounce(4)
-def main():
-    createRoutine(str(dino_sound_library[dinoCurrentIndex]))
-
-    # Increment the current routine index
-    dinoCurrentIndex = dinoCurrentIndex + 1
-
-    # Restart the index for the sounds
-    if dinoCurrentIndex == len(dino_sound_library):
-        print("Starting over")
-        dinoCurrentIndex = 0
-
 
 while True:
     try:
         # Only Trigger if the motion sensor detects movement
         if GPIO.input(SWITCH):
-            main()
+            createRoutine(str(dino_sound_library[dinoCurrentIndex]))
 
+            # Increment the current routine index
+            dinoCurrentIndex = dinoCurrentIndex + 1
+
+            # Restart the index for the sounds
+            if dinoCurrentIndex == len(dino_sound_library):
+                print("Starting over")
+                dinoCurrentIndex = 0
             # wait at least this long before next trigger default of 3-4 secs feels good
             sleep(3)
 
