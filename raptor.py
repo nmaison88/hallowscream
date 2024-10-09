@@ -81,6 +81,30 @@ currentIndex = 0
 dinoCurrentIndex = 0
 extended = False
 
+
+def playMovement(movement=''):
+    if (movement == 'center'):
+        GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+    elif (movement == 'twitch-left'):
+        GPIO.output(LEFT_ARM_RELAY, True)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+    elif (movement == 'twitch-right'):
+        GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, True)
+    elif (movement == 'rise'):
+        GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+        sleep(.5)
+        GPIO.output(LEFT_ARM_RELAY, True)
+        GPIO.output(RIGHT_ARM_RELAY, True)
+    elif (movement == 'fall'):
+        GPIO.output(LEFT_ARM_RELAY, True)
+        GPIO.output(RIGHT_ARM_RELAY, True)
+        sleep(.5)
+        GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+
 # method for waiting until the current sound is done playing before moving on
 
 
@@ -120,30 +144,6 @@ def playRoutine(sounds):
     # Return back to center
     playMovement('center')
     print("Routine Done")
-
-
-def playMovement(movement):
-    if (movement == 'center'):
-        GPIO.output(LEFT_ARM_RELAY, False)
-        GPIO.output(RIGHT_ARM_RELAY, False)
-    elif (movement == 'twitch-left'):
-        GPIO.output(LEFT_ARM_RELAY, True)
-        GPIO.output(RIGHT_ARM_RELAY, False)
-    elif (movement == 'twitch-right'):
-        GPIO.output(LEFT_ARM_RELAY, False)
-        GPIO.output(RIGHT_ARM_RELAY, True)
-    elif (movement == 'rise'):
-        GPIO.output(LEFT_ARM_RELAY, False)
-        GPIO.output(RIGHT_ARM_RELAY, False)
-        sleep(.5)
-        GPIO.output(LEFT_ARM_RELAY, True)
-        GPIO.output(RIGHT_ARM_RELAY, True)
-    elif (movement == 'fall'):
-        GPIO.output(LEFT_ARM_RELAY, True)
-        GPIO.output(RIGHT_ARM_RELAY, True)
-        sleep(.5)
-        GPIO.output(LEFT_ARM_RELAY, False)
-        GPIO.output(RIGHT_ARM_RELAY, False)
 
 
 def createRoutine(title=''):
