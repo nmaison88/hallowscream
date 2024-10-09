@@ -14,8 +14,7 @@ SWITCH = 4
 LEFT_ARM_RELAY = 23
 RIGHT_ARM_RELAY = 24
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(TRIG, GPIO.OUT)
-GPIO.setup(RELAY, GPIO.OUT)
+GPIO.setup(LEFT_ARM_RELAY, GPIO.OUT)
 GPIO.setup(RIGHT_ARM_RELAY, GPIO.OUT)
 GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 sound_player = pygame.mixer.Channel(2)
