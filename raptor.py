@@ -2,6 +2,7 @@
 # Imports go here
 import pygame
 import time
+from debounce import debounce
 from time import sleep
 from sys import exit
 import os
@@ -79,7 +80,8 @@ movements = ['twitch-left', 'twitch-right', 'rise', 'fall', 'center']
 # 'short_caw.wav'
 currentIndex = 0
 dinoCurrentIndex = 0
-extended = False
+delayScare = False
+isWarmingUp = False
 
 
 def playMovement(movement=''):
@@ -145,7 +147,7 @@ def playRoutine(sounds):
     playMovement('center')
     print("Routine Done")
 
-
+@debounce(4)
 def createRoutine(title=''):
     print("Getting routine for ", title)
     if (title == 'jump'):
