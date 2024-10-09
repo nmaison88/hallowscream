@@ -2,7 +2,6 @@
 # Imports go here
 import pygame
 import time
-from debounce import debounce
 from time import sleep
 from sys import exit
 import os
@@ -147,7 +146,6 @@ def playRoutine(sounds):
     playMovement('center')
     print("Routine Done")
 
-@debounce(4)
 def createRoutine(title=''):
     print("Getting routine for ", title)
     if (title == 'jump'):
