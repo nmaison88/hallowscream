@@ -111,10 +111,10 @@ def playMovement(movement=''):
 def waitForAudioToFinishPlaying():
     while sound_player.get_busy():
         print("audio still playing")
-        playMovement(random(movements))
+        playMovement(random.choice(movements))
         sleep(.2)
     print("Started and ready")
-    playMovement(random(movements))
+    playMovement(random.choice(movements))
     sleep(1)
     return
 # method for playing sounds, pass an array and it'll trigger up or down for each
@@ -127,7 +127,7 @@ def playRoutine(sounds):
         sound_player.play(file)
         print("Playing sound: ", sound)
         # play random movement
-        # playMovement(random(movements))
+        # playMovement(random.choice(movements))
 
         waitForAudioToFinishPlaying()
 
