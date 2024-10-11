@@ -26,7 +26,8 @@ dino_sound_library = ['jump',
                       'talk',
                       'attack'
                       ]
-movements = ['twitch-left', 'twitch-right', 'rise', 'fall', 'center']
+movements = ['twitch-left', 'twitch-right',
+             'rise', 'fall', 'center', 'shudder']
 
 # SOUND FILES
 # 'barky.wav',
@@ -90,8 +91,16 @@ def playMovement(movement=''):
     elif (movement == 'twitch-left'):
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, False)
+        sleep(.5)
+        GPIO.output(LEFT_ARM_RELAY, False)
+        sleep(.5)
+        GPIO.output(LEFT_ARM_RELAY, True)
     elif (movement == 'twitch-right'):
         GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, True)
+        sleep(.5)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+        sleep(.5)
         GPIO.output(RIGHT_ARM_RELAY, True)
     elif (movement == 'rise'):
         GPIO.output(LEFT_ARM_RELAY, False)
@@ -104,6 +113,20 @@ def playMovement(movement=''):
         GPIO.output(RIGHT_ARM_RELAY, True)
         sleep(.5)
         GPIO.output(LEFT_ARM_RELAY, False)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+    elif (movement == 'shudder'):
+        GPIO.output(LEFT_ARM_RELAY, True)
+        GPIO.output(RIGHT_ARM_RELAY, True)
+        sleep(.3)
+        GPIO.output(LEFT_ARM_RELAY, False)
+        sleep(.3)
+        GPIO.output(RIGHT_ARM_RELAY, False)
+        sleep(.3)
+        GPIO.output(LEFT_ARM_RELAY, True)
+        GPIO.output(RIGHT_ARM_RELAY, True)
+        sleep(.3)
+        GPIO.output(LEFT_ARM_RELAY, False)
+        sleep(.3)
         GPIO.output(RIGHT_ARM_RELAY, False)
 
 # method for waiting until the current sound is done playing before moving on
@@ -146,6 +169,7 @@ def playRoutine(sounds):
     playMovement('center')
     print("Routine Done")
 
+
 def createRoutine(title=''):
     print("Getting routine for ", title)
     if (title == 'jump'):
@@ -171,6 +195,12 @@ while True:
     try:
         # Only Trigger if the motion sensor detects movement
         if GPIO.input(SWITCH):
+        # if True:
+            print("Starting")
+
+            sleep(3)
+            print("should be after some time")
+
             createRoutine(str(dino_sound_library[dinoCurrentIndex]))
 
             # Increment the current routine index
