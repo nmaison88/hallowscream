@@ -48,14 +48,14 @@ movements = ['twitch-left', 'twitch-right',
 # 'classic3.wav',
 # 'fast_growl_sting.wav',
 # 'growl_medium.wav',
-# 'raptorsounds.35.wav',
+# 'raptorsounds.85.wav',
 # 'screech_growl.wav',
 # 'spike.wav',
 # 'call_others2.wav',
 # 'classic4.wav',
 # 'goody.wav',
 # 'growl_spike.wav',
-# 'raptorsounds.53.wav',
+# 'raptorsounds.93.wav',
 # 'screech_long.wav',
 # 'sting.wav',
 # 'call_others3.wav',
@@ -91,42 +91,42 @@ def playMovement(movement=''):
     elif (movement == 'twitch-left'):
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, False)
-        sleep(.5)
+        sleep(.9)
         GPIO.output(LEFT_ARM_RELAY, False)
-        sleep(.5)
+        sleep(.9)
         GPIO.output(LEFT_ARM_RELAY, True)
     elif (movement == 'twitch-right'):
         GPIO.output(LEFT_ARM_RELAY, False)
         GPIO.output(RIGHT_ARM_RELAY, True)
-        sleep(.5)
+        sleep(.9)
         GPIO.output(RIGHT_ARM_RELAY, False)
-        sleep(.5)
+        sleep(.9)
         GPIO.output(RIGHT_ARM_RELAY, True)
     elif (movement == 'rise'):
         GPIO.output(LEFT_ARM_RELAY, False)
         GPIO.output(RIGHT_ARM_RELAY, False)
-        sleep(.5)
+        sleep(.9)
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, True)
     elif (movement == 'fall'):
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, True)
-        sleep(.5)
+        sleep(.9)
         GPIO.output(LEFT_ARM_RELAY, False)
         GPIO.output(RIGHT_ARM_RELAY, False)
     elif (movement == 'shudder'):
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, True)
-        sleep(.3)
+        sleep(.8)
         GPIO.output(LEFT_ARM_RELAY, False)
-        sleep(.3)
+        sleep(.8)
         GPIO.output(RIGHT_ARM_RELAY, False)
-        sleep(.3)
+        sleep(.8)
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, True)
-        sleep(.3)
+        sleep(.8)
         GPIO.output(LEFT_ARM_RELAY, False)
-        sleep(.3)
+        sleep(.8)
         GPIO.output(RIGHT_ARM_RELAY, False)
 
 # method for waiting until the current sound is done playing before moving on
