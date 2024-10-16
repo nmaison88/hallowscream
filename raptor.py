@@ -19,6 +19,7 @@ GPIO.setup(RIGHT_ARM_RELAY, GPIO.OUT)
 GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 sound_player = pygame.mixer.Channel(2)
 ready_sound = pygame.mixer.Sound(dirname + '/ready.mp3')
+growl_sound = pygame.mixer.Sound(dirname + '/growl_fast.wav')
 dino_sound_library = ['jump',
                       'classic',
                       'call',
@@ -208,6 +209,8 @@ while True:
                 dinoCurrentIndex = 0
             # wait at least this long before next trigger default of 3-4 secs feels good
             sleep(3)
+            sound_player.play(growl_sound)
+
             print("Ready to scare Again!")
 
     except KeyboardInterrupt:
