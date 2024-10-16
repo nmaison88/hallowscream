@@ -136,11 +136,11 @@ def playMovement(movement=''):
 def waitForAudioToFinishPlaying():
     while sound_player.get_busy():
         print("audio still playing")
+        global animating
         if not animating:
             playMovement(random.choice(movements))
         sleep(.2)
     # playMovement(random.choice(movements))
-        global animating
         animating = False
 
     sleep(1)
