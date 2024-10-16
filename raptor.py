@@ -29,7 +29,7 @@ dino_sound_library = ['jump',
                       ]
 movements = ['twitch-left', 'twitch-right',
              'rise', 'fall', 'center', 'shudder']
-
+animating = False
 # SOUND FILES
 # 'barky.wav',
 # 'caw_scare_sting.wav',
@@ -136,9 +136,13 @@ def playMovement(movement=''):
 def waitForAudioToFinishPlaying():
     while sound_player.get_busy():
         print("audio still playing")
-        playMovement(random.choice(movements))
+        if not animating:
+            playMovement(random.choice(movements))
         sleep(.2)
-    playMovement(random.choice(movements))
+    # playMovement(random.choice(movements))
+        global animating
+        animating = False
+
     sleep(1)
     return
 # method for playing sounds, pass an array and it'll trigger up or down for each
@@ -149,6 +153,8 @@ def playRoutine(sounds):
         file = pygame.mixer.Sound(
             dirname + '/raptorFx/' + sound)
         sound_player.play(file)
+        global animating
+        animating = True
         print("Playing sound: ", sound)
         # play random movement
         # playMovement(random.choice(movements))
