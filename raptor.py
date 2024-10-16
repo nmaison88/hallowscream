@@ -137,7 +137,6 @@ def waitForAudioToFinishPlaying():
         print("audio still playing")
         playMovement(random.choice(movements))
         sleep(.2)
-    print("Started and ready")
     playMovement(random.choice(movements))
     sleep(1)
     return
@@ -196,10 +195,8 @@ while True:
         # Only Trigger if the motion sensor detects movement
         if GPIO.input(SWITCH):
         # if True:
-            print("Starting")
-
+            print("Scare Start!")
             # sleep(3)
-            print("should be after some time")
 
             createRoutine(str(dino_sound_library[dinoCurrentIndex]))
 
@@ -208,10 +205,10 @@ while True:
 
             # Restart the index for the sounds
             if dinoCurrentIndex == len(dino_sound_library):
-                print("Starting over")
                 dinoCurrentIndex = 0
             # wait at least this long before next trigger default of 3-4 secs feels good
             sleep(3)
+            print("Ready to scare Again!")
 
     except KeyboardInterrupt:
         exit()
