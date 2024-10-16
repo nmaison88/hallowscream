@@ -20,7 +20,7 @@ GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 sound_player = pygame.mixer.Channel(2)
 ready_sound = pygame.mixer.Sound(dirname + '/ready.mp3')
 growl_sound = pygame.mixer.Sound(dirname + '/raptorFx/' + 'growl_fast.wav')
-growl_sound.set_volume(.3)
+growl_sound.set_volume(.1)
 dino_sound_library = ['jump',
                       'classic',
                       'call',
@@ -144,7 +144,6 @@ def waitForAudioToFinishPlaying():
     # playMovement(random.choice(movements))
         animating = False
 
-    sleep(1)
     return
 # method for playing sounds, pass an array and it'll trigger up or down for each
 
