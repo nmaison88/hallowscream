@@ -91,42 +91,42 @@ def playMovement(movement=''):
     elif (movement == 'twitch-left'):
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, False)
-        sleep(.9)
+        sleep(.5)
         GPIO.output(LEFT_ARM_RELAY, False)
-        sleep(.9)
+        sleep(.5)
         GPIO.output(LEFT_ARM_RELAY, True)
     elif (movement == 'twitch-right'):
         GPIO.output(LEFT_ARM_RELAY, False)
         GPIO.output(RIGHT_ARM_RELAY, True)
-        sleep(.9)
+        sleep(.5)
         GPIO.output(RIGHT_ARM_RELAY, False)
-        sleep(.9)
+        sleep(.5)
         GPIO.output(RIGHT_ARM_RELAY, True)
     elif (movement == 'rise'):
         GPIO.output(LEFT_ARM_RELAY, False)
         GPIO.output(RIGHT_ARM_RELAY, False)
-        sleep(.9)
+        sleep(.5)
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, True)
     elif (movement == 'fall'):
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, True)
-        sleep(.9)
+        sleep(.5)
         GPIO.output(LEFT_ARM_RELAY, False)
         GPIO.output(RIGHT_ARM_RELAY, False)
     elif (movement == 'shudder'):
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, True)
-        sleep(.8)
+        sleep(.1)
         GPIO.output(LEFT_ARM_RELAY, False)
-        sleep(.8)
+        sleep(.1)
         GPIO.output(RIGHT_ARM_RELAY, False)
-        sleep(.8)
+        sleep(.1)
         GPIO.output(LEFT_ARM_RELAY, True)
         GPIO.output(RIGHT_ARM_RELAY, True)
-        sleep(.8)
+        sleep(.1)
         GPIO.output(LEFT_ARM_RELAY, False)
-        sleep(.8)
+        sleep(.1)
         GPIO.output(RIGHT_ARM_RELAY, False)
 
 # method for waiting until the current sound is done playing before moving on
@@ -198,7 +198,7 @@ while True:
         # if True:
             print("Starting")
 
-            sleep(3)
+            # sleep(3)
             print("should be after some time")
 
             createRoutine(str(dino_sound_library[dinoCurrentIndex]))
