@@ -20,6 +20,7 @@ GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 sound_player = pygame.mixer.Channel(2)
 ready_sound = pygame.mixer.Sound(dirname + '/ready.mp3')
 growl_sound = pygame.mixer.Sound(dirname + '/raptorFx/' + 'growl_fast.wav')
+growl_sound.set_volume(.3)
 dino_sound_library = ['jump',
                       'classic',
                       'call',
