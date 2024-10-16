@@ -19,7 +19,7 @@ GPIO.setup(RIGHT_ARM_RELAY, GPIO.OUT)
 GPIO.setup(SWITCH, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 sound_player = pygame.mixer.Channel(2)
 ready_sound = pygame.mixer.Sound(dirname + '/ready.mp3')
-growl_sound = pygame.mixer.Sound(dirname + '/growl_fast.wav')
+growl_sound = pygame.mixer.Sound(dirname + '/raptorFx/' + 'growl_fast.wav')
 dino_sound_library = ['jump',
                       'classic',
                       'call',
@@ -195,7 +195,7 @@ while True:
     try:
         # Only Trigger if the motion sensor detects movement
         if GPIO.input(SWITCH):
-        # if True:
+            # if True:
             print("Scare Start!")
             # sleep(3)
 
