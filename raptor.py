@@ -31,6 +31,7 @@ dino_sound_library = ['jump',
 movements = ['twitch-left', 'twitch-right',
              'rise', 'fall', 'center', 'shudder']
 animating = False
+DELAY_SCARE = 3 # delay the scare by this amount, set to 0 for no delay
 # SOUND FILES
 # 'barky.wav',
 # 'caw_scare_sting.wav',
@@ -195,6 +196,8 @@ def createRoutine(title=''):
 # play a sound to let you know were ready!
 sound_player.play(ready_sound)
 waitForAudioToFinishPlaying()
+# center the dino back
+playMovement('center')
 
 
 while True:
@@ -203,7 +206,7 @@ while True:
         if GPIO.input(SWITCH):
             # if True:
             print("Scare Start!")
-            # sleep(3)
+            sleep(DELAY_SCARE)
 
             createRoutine(str(dino_sound_library[dinoCurrentIndex]))
 
